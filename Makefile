@@ -2,7 +2,7 @@ build:
 	mkdir -p bin && go build -o bin/ps4-20th-tool main.go
 
 package:
-	goxc -d=builds
+	goxc
 
 test-brute: build
 	TEST=1 bin/ps4-20th-tool brute
