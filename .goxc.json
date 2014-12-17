@@ -1,6 +1,5 @@
 {
 	"AppName": "ps4-20th-tool",
-	"ArtifactsDest": "builds",
 	"MainDirsExclude": "test",
 	"PackageVersion": "0.1.0",
 	"ConfigVersion": "0.9"
