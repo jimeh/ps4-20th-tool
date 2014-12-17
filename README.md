@@ -1,9 +1,11 @@
 # ps4-20th-tool
 
 A small tool built for educational purposes that attempts to pick apart Sony's
-20 Years Of Character's website to find the secret URL. Chances are very high
-this tool no longer works as details about the how the website works are
-widely known.
+[20 Years Of Characters][20yoc] website to find the secret URL. Chances are
+very high this tool no longer works as details about the how the website works
+are widely known.
+
+[20yoc]: http://ps20.software.eu.playstation.com/
 
 Dean Wild has the best summary of the internals of the website that I've seen
 so far in his [blog post][] on the matter.
