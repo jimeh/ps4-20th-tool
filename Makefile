@@ -2,7 +2,7 @@ build:
 	mkdir -p bin && go build -o bin/ps4-20th-tool main.go
 
 package:
-	goxc -d=builds
+	goxc -d=builds -bc="!nacl,!plan9,!dragonfly"
 
 test-brute: build
 	TEST=1 bin/ps4-20th-tool brute

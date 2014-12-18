@@ -26,7 +26,7 @@ Binaries are available for download on the
 - Windows (x86, amd64)
 - NetBSD (x86, amd64, arm)
 - OpenBSD (x86, amd64)
-- Plan9 (x86)
+- Solaris (amd64)
 
 ### From Source
 
