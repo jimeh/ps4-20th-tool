@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func redirectHandler(w http.ResponseWriter, r *http.Request) {
 	sp := r.URL.Query().Get("sp")
 	response := "0"
 
@@ -26,12 +26,17 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, response)
 }
 
+func secretHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Congratulations, you have been registered!")
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
 	}
 
-	http.HandleFunc("/redirect.php", handler)
+	http.HandleFunc("/redirect.php", redirectHandler)
+	http.HandleFunc("/secret.php", secretHandler)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
