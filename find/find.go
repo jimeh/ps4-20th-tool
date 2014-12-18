@@ -16,12 +16,12 @@ var httpHeaders = map[string]string{
 		"Gecko/20100101 Firefox/34.0",
 }
 
-func httpGet(url string, headers map[string]string) (string, error) {
+func httpGet(url string) (string, error) {
 	client := &http.Client{}
 
 	req, _ := http.NewRequest("GET", url, nil)
 
-	for header, value := range headers {
+	for header, value := range httpHeaders {
 		req.Header.Add(header, value)
 	}
 
@@ -43,7 +43,7 @@ func httpGet(url string, headers map[string]string) (string, error) {
 }
 
 func getPageSource() string {
-	response, err := httpGet(sourceURL, httpHeaders)
+	response, err := httpGet(sourceURL)
 
 	if err != nil {
 		log.Fatal(err)
@@ -69,7 +69,7 @@ func getSecretURL(sp string) string {
 		sp = getSp()
 	}
 
-	secretURL, err := httpGet(redirectURL+"?sp="+sp, httpHeaders)
+	secretURL, err := httpGet(redirectURL + "?sp=" + sp)
 
 	if err != nil {
 		log.Fatal(err)
