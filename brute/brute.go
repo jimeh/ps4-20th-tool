@@ -9,6 +9,11 @@ import (
 
 var liveURL = "http://ps20.software.eu.playstation.com/redirect.php"
 var testURL = "http://localhost:4010/redirect.php"
+var httpHeaders = map[string]string{
+	"User-Agent": "Mozilla/5.0 " +
+		"(Macintosh; Intel Mac OS X 10.10; rv:34.0) " +
+		"Gecko/20100101 Firefox/34.0",
+}
 
 var alphabet = []string{
 	// "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
@@ -74,7 +79,15 @@ func tryURL(url string, notif chan msg) {
 }
 
 func httpGet(url string) string {
-	response, err := http.Get(url)
+	client := &http.Client{}
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	for header, value := range httpHeaders {
+		req.Header.Add(header, value)
+	}
+
+	response, err := client.Do(req)
 	body := ""
 
 	if err != nil {
