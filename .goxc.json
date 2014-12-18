@@ -2,5 +2,9 @@
 	"AppName": "ps4-20th-tool",
 	"MainDirsExclude": "test",
 	"PackageVersion": "0.1.1",
-	"ConfigVersion": "0.9"
+	"ConfigVersion": "0.9",
+  "Resources": {
+    "Include": "INSTALL*,README*,LICENSE*,auto-config.json.example",
+    "Exclude": "*.go"
+  }
 }
