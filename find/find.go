@@ -52,7 +52,7 @@ func getPageSource() string {
 	return response
 }
 
-func getSp() string {
+func GetSp() string {
 	sp := ""
 	r, _ := regexp.Compile("config\\.sp = \"(.+)\"")
 
@@ -64,9 +64,9 @@ func getSp() string {
 	return sp
 }
 
-func getSecretURL(sp string) string {
+func GetSecretURL(sp string) string {
 	if sp == "" {
-		sp = getSp()
+		sp = GetSp()
 	}
 
 	secretURL, err := httpGet(redirectURL + "?sp=" + sp)
@@ -90,7 +90,7 @@ func Source() {
 // Sp outputs SP details to STDOUT.
 func Sp(sp string) {
 	if sp == "" {
-		sp = getSp()
+		sp = GetSp()
 	}
 
 	fmt.Println("SP Code: " + sp)
@@ -99,7 +99,7 @@ func Sp(sp string) {
 // RedirectURL outputs Redirect URL details to STDOUT.
 func RedirectURL(sp string) {
 	if sp == "" {
-		sp = getSp()
+		sp = GetSp()
 	}
 
 	fmt.Println("Redirect URL: " + makeLookupURL(sp))
@@ -108,15 +108,15 @@ func RedirectURL(sp string) {
 // Secret output secret URL details to STDOUT.
 func Secret(sp string) {
 	if sp == "" {
-		sp = getSp()
+		sp = GetSp()
 	}
 
-	fmt.Println("Secret URL: " + getSecretURL(sp))
+	fmt.Println("Secret URL: " + GetSecretURL(sp))
 }
 
 // Details outputs a summary of SP, Redirect, and Secret URL to STDOUT.
 func Details() {
-	sp := getSp()
+	sp := GetSp()
 	Sp(sp)
 	RedirectURL(sp)
 	Secret(sp)
