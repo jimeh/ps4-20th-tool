@@ -68,14 +68,13 @@ func finder(url string, seed string, notif chan msg) {
 func tryURL(url string, notif chan msg) {
 	response := httpGet(url)
 	notif <- msg{Type: "incr"}
-
-	if response != "0" {
+	previousURL := "https://1994.game.co.uk/CA94404W1F7LP.php"
+	if response != "0" && response != previousURL {
 		notif <- msg{
 			Type: "print",
 			Body: "Found: " + url + " = " + response,
 		}
 	}
-
 }
 
 func httpGet(url string) string {
